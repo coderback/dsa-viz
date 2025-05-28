@@ -6,14 +6,17 @@ import React, {
   useRef,
   useEffect,
 } from 'react';
-import type { AlgorithmModule, Frame } from '../types/types';
-import { DefaultModule } from '../modules/DefaultModule';
+import type { AlgorithmModule, Frame } from '@/types/types';
+import { moduleCategories } from '@/modules/modulesConfig';
+
+const defaultModule = moduleCategories[1].subcategories[0].modules[0];
 
 interface VizContextType {
   currentModule: AlgorithmModule;
   params: Record<string, number | string | boolean>;
   currentFrame: Frame;
   currentStep: number;
+  selectModule: (mod: AlgorithmModule) => void;
   updateParam: (key: string, value: any) => void;
   play: () => void;
   pause: () => void;
@@ -26,7 +29,7 @@ const VizContext = createContext<VizContextType>({} as VizContextType);
 export const useViz = () => useContext(VizContext);
 
 export const VizProvider = ({ children }: { children: React.ReactNode }) => {
-  const currentModule: AlgorithmModule = DefaultModule;
+  const [currentModule, setModule] = useState<AlgorithmModule>(defaultModule);
   const [params, setParams] = useState(currentModule.defaultParams);
   const [currentFrame, setCurrentFrame] = useState<Frame>({
     state: currentModule.init(params),
@@ -35,6 +38,15 @@ export const VizProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setPlaying] = useState(false);
   const animationRef = useRef<number>(0);
+
+  const selectModule = (mod: AlgorithmModule) => {
+    setModule(mod);
+    const newParams = mod.defaultParams;
+    setParams(newParams);
+    setCurrentFrame({ state: mod.init(newParams), highlights: [] });
+    setCurrentStep(0);
+    setPlaying(false);
+  };
 
   const updateParam = (key: string, value: any) => {
     const newParams = { ...params, [key]: value };
@@ -78,6 +90,7 @@ export const VizProvider = ({ children }: { children: React.ReactNode }) => {
         params,
         currentFrame,
         currentStep,
+        selectModule,
         updateParam,
         play,
         pause,

@@ -1,4 +1,4 @@
-import { AlgorithmModule, VizParams, Frame, Highlight } from '../types/types';
+import { AlgorithmModule, VizParams, Frame, Highlight } from '@/types/types';
 import * as d3 from 'd3';
 
 export const DefaultModule: AlgorithmModule = {
