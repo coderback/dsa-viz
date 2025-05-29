@@ -1,14 +1,12 @@
 'use client';
 import React from 'react';
 import { useViz } from '../context/VizContext';
-import ModuleSelector from './ModuleSelector';
 
 export default function ControlPanel() {
   const { currentModule, params, updateParam, play, pause, step, reset, isPlaying } = useViz();
 
   return (
     <div className="space-y-6">
-      <ModuleSelector />
       <h2 className="text-xl font-semibold">Parameters</h2>
       <div className="space-y-4">
         {Object.entries(currentModule.defaultParams).map(([key]) => (

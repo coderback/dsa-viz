@@ -1,5 +1,3 @@
-// src/modules/modulesConfig.ts
-
 import {
   DefaultModule,
   LinearSearch,
@@ -15,10 +13,10 @@ export const moduleCategories = [
   {
     title: 'Data Structures',
     subcategories: [
-      { title: 'Linear Structures',       modules: [] },
+      { title: 'Linear Structures', modules: [] },
       { title: 'Hierarchical Structures', modules: [] },
-      { title: 'Graph-Based Structures',  modules: [] },
-      { title: 'Hash-Based Structures',   modules: [] },
+      { title: 'Graph-Based Structures', modules: [] },
+      { title: 'Hash-Based Structures', modules: [] },
     ],
   },
   {
@@ -28,7 +26,7 @@ export const moduleCategories = [
         title: 'Searching & Sorting',
         modules: [
           LinearSearch,
-          DefaultModule,  // Binary Search
+          DefaultModule, // Binary Search
           BubbleSort,
           InsertionSort,
           SelectionSort,
@@ -37,12 +35,12 @@ export const moduleCategories = [
           HeapSort,
         ],
       },
-      { title: 'Divide and Conquer',           modules: [] },
-      { title: 'Greedy Algorithms',            modules: [] },
-      { title: 'Dynamic Programming',          modules: [] },
+      { title: 'Divide and Conquer', modules: [] },
+      { title: 'Greedy Algorithms', modules: [] },
+      { title: 'Dynamic Programming', modules: [] },
       { title: 'Backtracking & Branch-and-Bound', modules: [] },
-      { title: 'Graph Algorithms',             modules: [] },
-      { title: 'String & Pattern-Matching',    modules: [] },
+      { title: 'Graph Algorithms', modules: [] },
+      { title: 'String & Pattern-Matching', modules: [] },
     ],
   },
 ];

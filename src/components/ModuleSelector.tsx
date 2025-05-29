@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import { useViz } from '@/context/VizContext';
-import { moduleCategories } from '@/modules/modulesConfig';
+import { useViz } from '../context/VizContext';
+import { moduleCategories } from '../modules/modulesConfig';
 
 export default function ModuleSelector() {
   const { selectModule, currentModule } = useViz();
