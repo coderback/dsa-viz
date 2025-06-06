@@ -38,7 +38,7 @@ export default function ModuleSelector() {
 
       <label className="block text-sm font-medium">Module</label>
       <select
-        value={mods.findIndex(m => m.name === currentModule.name)}
+        value={currentModule ? mods.findIndex(m => m.name === currentModule.name) : 0}
         onChange={(e) => selectModule(mods[Number(e.target.value)])}
         className="w-full border rounded p-1"
       >
